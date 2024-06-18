@@ -21,6 +21,10 @@
             <span class="category-title">游擊隊</span>
             <span id="mtx_bvav" class="category-value">加載中...</span>
         </div>
+        <div class="category-box" id="guerrilla-tank">
+            <span class="category-title">方向</span>
+            <span id="mtx_p" class="category-value">加載中...</span>
+        </div>
     </div>
     <h2>台指籌碼力道</h2>
      參考指標: 
@@ -98,19 +102,22 @@ async function fetchData() {
 // Function to update UI with fetched data
 function updateUI(data) {
     // Extract data for each category
-    const tx_bvav = data['tx_bvav'];
-    const mtx_tbta = data['mtx_tbta'];
-    const mtx_bvav = data['mtx_bvav'];
+    const tx_bvav = data['tx_bvav'];    // 坦克
+    const mtx_tbta = data['mtx_tbta'];  // 炮灰
+    const mtx_bvav = data['mtx_bvav'];  // 游擊隊
+    const mtx_tx = tx_bvav+mtx_bvav;  // 主力方向
 
     // Update DOM elements with the fetched data
     document.getElementById('tx_bvav').textContent = tx_bvav;
     document.getElementById('mtx_tbta').textContent = mtx_tbta;
     document.getElementById('mtx_bvav').textContent = mtx_bvav;
+    document.getElementById('mtx_p').textContent = mtx_tx;
 
     // Apply color coding based on conditions using setCategoryColors
     setCategoryColors('tank-category', tx_bvav);
     setCategoryColors('cannon-fodder-category', mtx_tbta);
     setCategoryColors('guerrilla-category', mtx_bvav);
+    setCategoryColors('guerrilla-tank', mtx_tx);
 }
 
 // Function to set background color based on value for both text and container
@@ -144,3 +151,4 @@ fetchData();
 setInterval(fetchData, 5000);
 
 </script>
+
