@@ -9,6 +9,7 @@
 <body>
     <h1>台指期籌碼力道</h1>
     <div id="index-value"> TX-1 台指期 N/A </div>
+        <div id="highlow-value"> 最高 N/A </div>
     <div id="data-container">
     <div class="category-box" id="tank-category">
         <span class="category-title">坦克</span>
@@ -27,8 +28,7 @@
         <span id="mtx_p" class="category-value">加載中...</span>
     </div>
     </div>
-    <h2>台指籌碼力道</h2>
-     參考指標: 
+    <h2>參考說明</h2>
     <p style="color: red;">游擊＋　坦克＋　炮灰－ ➡️　方向偏多
     <p style="color: green;">游擊－　坦克－　炮灰＋ ➡️　方向偏空
 
@@ -42,7 +42,7 @@
     margin-bottom: 10px;
 }
 
-#index-value {
+#index-value, #highlow-value{
     /* 指數 */
     text-align: center;
     margin-bottom: 20px;
@@ -70,6 +70,12 @@ h1 {
     color: #fff;
     text-align: center;
     margin-bottom: 20px;
+}
+h2 {
+    /* 標題 */
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 p {
@@ -158,11 +164,19 @@ async function fetchIndexValues() {
                         case '開盤':
                             openValue = valueText;
                             break;
+                        case '最高':
+                            highValue = valueText;
+                            break;
+                        case '最低':
+                            lowValue = valueText;
+                            break;
                     }
                 }
             });     
-              document.getElementById('index-value').textContent = 'TX-1 台指期　' + 
-                (indexValue || 'N/A')　+'　' + (changeValue || 'N/A') +'　' +(percentageChange || 'N/A') 
+            document.getElementById('index-value').textContent = 'TX-1 台指期　' + 
+                (indexValue || 'N/A')　+'　' + (changeValue || 'N/A') +'　' +(percentageChange || 'N/A')
+            document.getElementById('highlow-value').textContent = '最高　' + 
+                (highValue || 'N/A')　+'　最低　' + (lowValue || 'N/A') 
             } catch (error) {
                 console.error('Error fetching index values:', error);
             }
