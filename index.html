@@ -176,7 +176,7 @@ async function fetchIndexValues() {
             document.getElementById('index-value').textContent = 'TX-1 台指期　' + 
                 (indexValue || 'N/A')　+'　' + (changeValue || 'N/A') +'　' +(percentageChange || 'N/A')
             document.getElementById('highlow-value').textContent = '最高　' + 
-                (highValue || 'N/A')　+'　最低　' + (lowValue || 'N/A') 
+                (highValue || 'N/A')　+'　最低　' + (lowValue || 'N/A') +'　開盤　' + (openValue || 'N/A')
             } catch (error) {
                 console.error('Error fetching index values:', error);
             }
