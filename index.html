@@ -87,11 +87,14 @@ async function fetchIndexValues() {
                         case '最低':
                             lowValue = valueText;
                             break;
+                        case '成交量(口)':
+                            volume = valueText;
+                            break;
                     }
                 }
             });     
             document.getElementById('index-value').textContent = 'TX-1 台指期　' + 
-                (indexValue || 'N/A')　+'　' + (changeValue || 'N/A') +'　' +(percentageChange || 'N/A')
+                (indexValue || 'N/A')　+'　' + (changeValue || 'N/A') +'　' +(percentageChange || 'N/A') +'　量(口)' +(volume || 'N/A')
             document.getElementById('highlow-value').textContent = '最高　' + 
                 (highValue || 'N/A')　+'　最低　' + (lowValue || 'N/A') +'　開盤　' + (openValue || 'N/A')
             } catch (error) {
